@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>s05 Activity </title>
+</head>
+<body>
+    <header>
+        <h1>Zuitt IT Solutions</h1>
+    </header>
+
+    <section>
+        <h2>Product Offered</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Package</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basic</td>
+                    <td>&#8369; 500.00</td>
+                    <td>Package includes a fully functional website with desired specifications.</td>
+                </tr>
+                <tr>
+                    <td>Premium</td>
+                    <td>&#8369; 1000.00</td>
+                    <td>Enjoy all the benefits of the basic package and also includes site support and maintenance.</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="3">Additional Features after initial project is inclusive of charges</th>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+    <section>
+        <h2>Contact Form</h2>
+        <form action="">
+
+            <label for="first_name">First Name:</label><br>
+            <input type="text" name="first_name" id="first_name" required autocomplete><br>
+            
+            <label for="last_name">Last Name:</label><br>
+            <input type="text" name="last_name" id="last_name" required autocomplete><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" name="email" id="email" required autocomplete><br>
+
+            <label for="contact">Contact Number:</label><br>
+            <input type="number" name="contact" id="contact" required><br>
+
+            <label for="service_type">Service Type:</label><br>
+            <select name="service_type" id="service_type">
+                <option value="Front End Programming">Front End Programming</option>
+                <option value="Back End Programming">Back End Programming</option>
+            </select><br>
+
+            <label>Preferred Contact:</label><br>
+            <input type="checkbox" name="contact1" id="contact1" value="email">
+            <label for="contact1">Email</label><br>
+
+            <input type="checkbox" name="contact2" id="contact2" value="phone_package">
+            <label for="contact2">Phone Package:</label><br>
+
+            <input type="radio" name="phone_package" id="phone_package1">
+            <label for="phone_package1">Basic</label><br>
+
+            <input type="radio" name="phone_package" id="phone_package2">
+            <label for="phone_package2">Premium</label><br>
+
+            <label for="message">Message</label><br>
+            <textarea name="message" rows="6" id="message"></textarea>
+            <br>
+            <button type="submit">Submit</button>
+            <button type="reset">reset</button>
+        </form>
+    </section>  
+
+
+</body>
+</html>

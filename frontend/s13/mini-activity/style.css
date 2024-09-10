@@ -1,0 +1,58 @@
+/* CSS */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    /* Set width and height for the container */
+    height: 400px;
+    width: 95%;
+    /* Add border or background if needed */
+    border: 1px solid black;
+}
+
+.card {
+    /* Set width, height, padding, and border */
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid black;
+    /* Add text alignment and font size */
+    text-align: center;
+    font-size: 30px;
+    /* Use position: absolute; to allow for overlapping */
+    position: absolute;
+}
+
+.card1 {
+    /* Set background color */
+    background-color: blue;
+    /* Position the card */
+    position: relative;
+    /* Use z-index for stacking order */
+    z-index: 1;
+}
+
+.card2 {
+    /* Set background color */
+    background-color: green;
+    /* Position the card slightly offset from card1 */
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    /* Use a higher z-index than card1 */
+    z-index: 2;
+}
+
+.card3 {
+    /* Set background color */
+    background-color: red;
+    /* Position the card slightly offset from card2 */
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    /* Use a higher z-index than card2 */
+    z-index: 3;
+}

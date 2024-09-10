@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* CSS float is a property that allows elements to be positioned horizontally within their parents*/
+.paragraph {
+    margin-bottom: 60px;
+}
+
+.img-float {
+    width: 200px;
+    height: 200px;
+    float: inherit;
+    float: left;
+    float: right;
+}
+
+/* relative value - remain in the normal flow of the documents. But, unlike static elements, the left, right, top, bottom, and z-index properties affect the position of the element */
+
+/* Absolute value are positioned relative to their parent elements. Absolute is positioned relative to its closest positioned ancestor. Means  that the parent element has to have a position value other than position: static */
+
+/* Fixed value -  similar to absolute position. Tremoved from the normal low of document. but unlike absolute, fixed is always relative to the element*/
+
+/* Sticky value - is a mixed of relative and fixed. it acts like a relatively positioned element until a certain scroll poinn and then it acts like a fixed element */
+.parent-element {
+    background-color: skyblue;
+    padding: 50px 10px;
+    position: relative;
+    height: 300px;
+}
+
+.child-one {
+    background-color: gray;
+    padding: 10px;
+}
+.child-two {
+    background-color: green;
+    padding: 10px;
+    position: sticky;
+    /* left: 10px;
+    bottom: 10px; */
+    top: 10px;
+}
+.child-three {
+    background-color: indianred;
+    padding: 10px;
+}
+
+html {
+    height: 800vh;
+}
+
+
+/* Z-Index */ 
+.container {
+    position: relative;
+}
+
+.black-box {
+    position: relative;
+    z-index: 1;
+    border: 2px solid black;
+    height: 100px;
+    margin: 30px;
+}
+
+.gray-box {
+    position: absolute;
+    z-index: 3;
+    background-color: lightgray;
+    height: 60px;
+    width: 70%;
+    left: 50px;
+    top: 60px;
+}
+
+.green-box {
+    position: absolute;
+    z-index: 2;
+    background-color: lightgreen;
+    width: 35%;
+    left: 270px;
+    top: -15px;
+    height: 100px;
+}
+

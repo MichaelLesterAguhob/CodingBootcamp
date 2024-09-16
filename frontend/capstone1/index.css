@@ -1,0 +1,12 @@
+*{
+    font-family: "Roboto Mono", monospace;
+}
+
+.card {
+    width: 19rem;
+    background-color: rgb(230, 225, 225);
+}
+
+#input-message{
+    height: 10rem;
+}

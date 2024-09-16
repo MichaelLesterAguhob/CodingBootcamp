@@ -1,0 +1,159 @@
+#logo {
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 24px;
+  text-align: left;
+  color: #003363;
+}
+
+nav a {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #004e84;
+}
+
+#title {
+  font-family: Montserrat;
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 84px;
+  text-align: center;
+  color: #ffffff;
+}
+
+#base {
+  padding: 8px 24px 8px 24px;
+  border-radius: 2px 0px 0px 0px;
+  background: #12c6ff;
+
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+}
+
+#landing {
+  background: linear-gradient(rgba(0, 34, 65, 0.61), rgba(0, 34, 65, 0.61)),
+    url("./images/banner.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#about {
+  background: #003363;
+}
+
+#text-title {
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+  color: #12c6ff;
+}
+
+#about p {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  color: #ffffff;
+}
+
+#contact {
+  background: #003363;
+}
+
+#contact-header {
+  font-family: Montserrat;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: left;
+  color: #12c6ff;
+}
+
+#contact-text {
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: left;
+  color: #ffffff;
+}
+
+#contact form label {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24.38px;
+  text-align: left;
+  color: #ffffff;
+}
+
+#contact form input {
+  background: #ffffff;
+  border: 1px solid #12c6ff;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29.26px;
+  display: flex;
+  align-items: center;
+  color: #003363;
+}
+
+#contact form textarea {
+  background: #ffffff;
+  border: 1px solid #12c6ff;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29.26px;
+  display: flex;
+  align-items: center;
+}
+
+#form-btn {
+  padding: 8px 24px 8px 24px;
+  gap: 8px;
+  border-radius: 2px 0px 0px 0px;
+  background: #12c6ff;
+
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+}
+
+#contact-image {
+  background: linear-gradient(rgba(0, 34, 65, 0.61), rgba(0, 34, 65, 0.61)),
+    url("./images/building.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#social-header {
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+footer {
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;    
+}

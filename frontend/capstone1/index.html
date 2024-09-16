@@ -19,7 +19,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+
+    <!-- navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Michael Portfolio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -30,8 +32,8 @@
                 <div class="navbar-nav ms-auto me-5">
                     <a class="nav-link active" aria-current="page" href="#landing">Home</a>
                     <a class="nav-link" href="#projects">Projects</a>
-                    <a class="nav-link" href="#contact">Contact</a>
                     <a class="nav-link" href="#tools">Tools</a>
+                    <a class="nav-link" href="#contact">Contact</a>
                 </div>
             </div>
         </div>
@@ -147,7 +149,7 @@
     <section id="contact" class="container-fluid bg-dark">
         <h2 class="text-light mb-5">Contact</h2>
         <div class="row">
-            <div class="col-12 col-md-12 col-lg-4 text-center">
+            <div class="col-12 col-md-12 col-lg-4 py-5 text-center">
                 <h4 class="text-info mb-3">Get in touch</h4>
                 <a href="https://www.facebook.com/mikellester.cabalq"><img src="./images/fb.png" alt="contact icon"
                         class="img-fluid" width="50" height="50"></a>
@@ -159,24 +161,30 @@
                         class="img-fluid" width="50" height="50"></a>
             </div>
 
-            <div class="col-12 col-md-12 col-lg-4 text-center">
+            <div class="col-12 col-md-12 col-lg-4 py-5 text-center">
                 <h4 class="text-info mb-3">Visit Us</h4>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61714.42058599454!2d121.04710489581814!3d14.8167649664022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397afa422693581%3A0x981101434383975d!2sSan%20Jose%20del%20Monte%20City%2C%20Bulacan!5e0!3m2!1sen!2sph!4v1726459556832!5m2!1sen!2sph" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="location-map" class="rounded-2"></iframe>
             </div>
 
-            <div class="col-12 col-md-12 col-lg-4 text-center">
-                <h4 class="text-info">Message Us</h4>
+            <div class="col-12 col-md-12 col-lg-4 py-5">
+                <h4 class="text-info text-center">Message Us</h4>
                 <form class="mt-3">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="input-name" placeholder="type here">
+                        <input type="email" class="form-control" id="input-name" placeholder="type here" required>
                         <label for="input-name">Full Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="input-email" placeholder="type here">
+                        <input type="email" class="form-control" id="input-email" placeholder="type here" required>
                         <label for="input-email">Email address</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea name="" id="input-message" class="form-control" placeholder="type here"></textarea>
+                        <textarea name="" id="input-message" class="form-control" placeholder="type here"
+                            required></textarea>
                         <label for="input-message">Message</label>
+                    </div>
+                    <div id="form-button" class="d-flex d-grid gap-5 justify-content-end">
+                        <button type="submit" class="btn btn-success">Send</button>
+                        <button type="reset" class="btn btn-warning">Clear</button>
                     </div>
                 </form>
             </div>

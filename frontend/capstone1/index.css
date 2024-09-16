@@ -1,4 +1,4 @@
-*{
+* {
     font-family: "Roboto Mono", monospace;
 }
 
@@ -7,6 +7,11 @@
     background-color: rgb(230, 225, 225);
 }
 
-#input-message{
+#location-map {
+    width: 90%;
+    height: 80%;
+}
+
+#input-message {
     height: 10rem;
 }

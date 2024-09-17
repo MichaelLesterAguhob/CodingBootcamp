@@ -45,8 +45,7 @@ console.log(match);
 
 //Research the use of the string .length property.
 let word = "supercalifragilisticexpialidocious"
-let wordLength = word.length; 
-let isLong = wordLength > 20;
+let isLong = word.length > 20;
 
 console.log("Is the number of characters in the word greater than 20 characters?")
 console.log(isLong);

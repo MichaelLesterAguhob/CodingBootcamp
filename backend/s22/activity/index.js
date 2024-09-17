@@ -40,8 +40,8 @@ console.log(messageLog);
         - In it, add a string with the same sentence that includes a single quote (') without using the escape character.
     - Log both strings to the console and observe the difference.
 */
-let sentenceWithEscape = 'I\'m learning JavaScript';
-let sentenceWithoutEscape = 'I\'m learning JavaScript';
+const sentenceWithEscape = 'I\'m learning JavaScript';
+const sentenceWithoutEscape = "I'm learning JavaScript";
 console.log(sentenceWithEscape);
 console.log(sentenceWithoutEscape);
  

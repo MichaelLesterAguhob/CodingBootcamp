@@ -40,11 +40,11 @@ console.log(messageLog);
         - In it, add a string with the same sentence that includes a single quote (') without using the escape character.
     - Log both strings to the console and observe the difference.
 */
-let sentenceWithEscape = "I\'m learning JavaScript";
-let sentenceWithoutEscape = "I'm learning JavaScript";
+let sentenceWithEscape = 'I\'m learning JavaScript';
+let sentenceWithoutEscape = 'I\'m learning JavaScript';
 console.log(sentenceWithEscape);
 console.log(sentenceWithoutEscape);
-
+ 
 
 
 /*
@@ -149,7 +149,7 @@ console.log(userName);
 
     console.log("Hobbies:")
     console.log(hobbies);
-    
+
     console.log("Work Address:")
     console.log(workAddress);
 
@@ -164,7 +164,7 @@ console.log(userName);
 let fullName = "Steve Rogers";
 console.log("My full name is: " + fullName);
 
-let currentAge = 24;
+let currentAge = 40;
 console.log("My current age is: " + currentAge);
 
 let friends = ["Tony", "Bruce", "Thor", "Natasha", "Clint", "Nick"];

@@ -105,7 +105,7 @@ let weeksMonth = 4;
 let monthsYear = 12;
 let daysYear = 365;
 
-let resultMinutes = (minutesHour * hoursDay)*daysYear;
+let resultMinutes = minutesHour * hoursDay *daysYear;
 console.log("There are " + resultMinutes + " minutes in a year.");
 
 /*
@@ -125,9 +125,15 @@ console.log(tempCelsius + " degrees Celsius when converted to Farenheit is " + r
 
 */
 let num7 = 165;
+let isDivisibleBy8 = num7 % 8;
+console.log("The remainder of " + num7 + " divided by 8 is: " + isDivisibleBy8);
+
+
 //Log the value of the remainder in the console.
+isDivisibleBy8 = num7 % 8 == 0;
 console.log("Is num7 divisible by 8?");
 //Log the value of isDivisibleBy8 in the console.
+console.log(isDivisibleBy8);
 
 
 /*
@@ -140,10 +146,15 @@ console.log("Is num7 divisible by 8?");
 
 */
 let num8 = 348;
+let isDivisibleBy4 = num8 % 4;
+
 //Log the value of the remainder in the console.
+console.log("The remainder of " + num8 + " divided by 4 is: " + isDivisibleBy4);
+
+isDivisibleBy4 = num8 % 4 == 0;
 console.log("Is num8 divisible by 4?");
 //Log the value of isDivisibleBy4 in the console.
-
+console.log(isDivisibleBy4);
 
 /* 
 13. Given the values below, calculate the average and identify if the average score is greater than 75.
@@ -160,13 +171,16 @@ let groupA_score = 75;
 let groupB_score = 80;
 let groupC_score = 76;
 let groupD_score = 74;
+let average = (groupA_score + groupB_score + groupC_score + groupD_score) / 4;
+let isPassing = average > 75;
 
 //Log the value of the average in the console.
 console.log("Average score of the group:");
+console.log(average);
 
 //Log the value of the average in the console.
 console.log("Average score of the group is greater than 75?");
-
+console.log(isPassing);
 
 
 //Do not modify

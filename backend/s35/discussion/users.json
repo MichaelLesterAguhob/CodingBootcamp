@@ -1,0 +1,10 @@
+{
+	"_id": "89354hjfhbjksd83274ehdbfj",
+	"firstName": "Hillary",
+	"lastName": "Almonte",
+	"email": "hillary.almonte@tuitt.com",
+	"password": "user1234",
+	"isAdmin": false,
+	"mobileNumber": "09123456789",
+	"enrollments": ["fvs73468fgeuw4", "ejgtr782648rfg", "7534fhj47rue"]
+}

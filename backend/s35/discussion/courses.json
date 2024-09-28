@@ -1,0 +1,10 @@
+
+{
+    "_id": "601ccbe89bcd482ee8fa2c99",
+    "name": "HTML",
+    "description": "Learn the basics and how to code.",
+    "price": 1000,
+    "isActive": true,
+    "slots": "20",
+    "enrollees": ["507f1f77bcf86cd799439011"]
+}

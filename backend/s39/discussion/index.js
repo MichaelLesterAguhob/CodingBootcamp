@@ -100,15 +100,9 @@ app.put("/change-password", (req, res) => {
         } else {
             message = "User does not exist";
         }
-
-        res.send(message);
     }
+    res.send(message);
 })
-
-
-
-
-
 
 // tells our server to listen to the port given
 if(require.main === module) {

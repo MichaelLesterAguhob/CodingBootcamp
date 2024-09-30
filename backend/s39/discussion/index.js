@@ -1,77 +1,109 @@
-
-// require directive to load the express m,odule/package
-//module is a software component/part of a program that conatins one or more routines
+// use the "require" directive to load the express module/package
+// a module is a software component/part of a program that contains one or more routines
+// this is to get the contents of the express package to be used by our application
 const express = require("express");
 
-// creating an app using express
-// this creates an express app and stores it in a variable app
-// APP is our server
+// create an application using express
+// this creates an express application and stores it in a variable app
+// In simpler terms, app is our server
 // http://localhost
 const app = express();
 
-// for the app to run, need a port where to listen to
+// For our application to run, we need a port tolisten to
 const port = 4000;
 
-// these are called middlewares
-// middlewares are software that provide common services to the app outside of what is being offered by the operating system
+// these are called middlewares 
+// middlewares is a software that provides common services to the application outside of what's being offered by the operating system.
 
-// setup for allowing the server to handle data from your requyest or from the client 
-// because it allows app to read json data and convert it into JS object
+// setup for allowing the server to handle data from requests(client)
+// allows our app to read json data and convert it into JS object
 app.use(express.json());
-
-//  by Default, info receive from the url can only be received as a string or an array
-// by applying the option of extended : true this allows us to receive info in other data type such as an object which we will use throughout the app
+// By default, information received from the url can only be received as a string or an array
+// By applying the option of extended: true, this allows us to receive information in other data types such as an object which we will use throughout the application
 app.use(express.urlencoded({ extended: true }));
 
 // [SECTION] Routes
-// express has a methods corresponding to reach HTTP method. 
-// This route expects to receive a GET request from the URI "/"
-// 1st argument will be the URI endpoint
+// express has methods corresponding to each HTTP method
+// this route expects to receive a GET request from the URI "/"
+// the first argument will be the URI endpoint
 app.get('/', (req, res) => {
 
-    // it uses send() method to send a response back to the client
-    res.send('Hello World!');
+	// it uses send() method to send a response back to the client
+	res.send('Hello World!');
 })
 
-// MINI ACT
-app.get('/hello', (req, res) => {
-    res.send('Hello from the other side!');
+// Mini-Activity
+// This route expects to receive a GET request at the URI "/hello" displaying "Hello from the other side!"
+app.get("/hello", (req, res) => {
+
+	res.send("Hello from the other side!");
 })
 
 // this route expects to receive a POST request at the URI "/hello"
-app.post('/hello', (req, res) => {
+app.post("/hello", (req, res) => {
 
-    // body property is a property found in request object
-    // req.body contains the contents/data of the request body
-    /* 
-        req.body = {
-                    "firstName":"Michael Lester",
-                    "lastName":"Aguhob"
-                }
-     */
-    res.send(`Hello there ${req.body.firstName} ${req.body.lastName}`);
-})
+	// body is a property found in the request object
+	// req.body contains the contents/data of the request body
+	/*
+		req.body = {
+		    "firstName": "Hillary",
+		    "lastName": "Almonte"
+		}
+	*/
+	res.send(`Hello there ${req.body.firstName} ${req.body.lastName}!`);
+});
 
+// created an empty "users" array tha will store the contents of the request body
+// this will serve as our mock database
 let users = [];
-app.post("/register", (req, res) => {
-    if(req.body.username !== '' && req.body.password !== '') {
-        users.push(req.body);
-        res.send(`User ${req.body.username} successfully registered`)
-    } else {
-        res.send(`Please input BOTH username and password.`)
-    }
-    console.log(users);
-})
 
+// this route expects to receive a POST request at the URI "/register"
+// this will mirror a real worls application of registration
+app.post("/register", (req, res) => {
+
+	// if the username or password is not empty
+	if(req.body.username !== '' && req.body.password !== '') {
+
+		// this will store the content of the req.body in the users array
+		users.push(req.body);
+
+		res.send(`User ${req.body.username} successfully registered`);
+
+	} else {
+
+		res.send('Please input BOTH username and password.')
+	}
+
+	console.log(users);
+})
 
 app.delete("/delete-user", (req, res) => {
-    if (users.length > 0) {
-      users.pop();
-      res.send(users);
-    } else {
-      res.send("Users collection is empty.");
+
+	if(users.length > 0) {
+
+		users.pop();
+		res.send(users);
+
+	} else {
+
+		res.send("Users collection is empty.");
+	}
+})
+
+// ACTIVITY
+app.put("/change-password", (req, res) => {
+    let message;
+	for(let i = 0; i < users.length; i++) {
+        if(users[i].username === req.body.username) {
+            users[i].password = req.body.password;
+            message =  `User ${ users[i].username }\'s password has been updated`;
+        } else {
+            message = "User does not exist";
+        }
+
+        res.send(message);
     }
-  });
+})
 
 
 
@@ -79,4 +111,8 @@ app.delete("/delete-user", (req, res) => {
 
 
 // tells our server to listen to the port given
-app.listen(port, () => console.log(`Server is running port: ${port}`));
+if(require.main === module) {
+    app.listen(port, () => console.log(`Server is running at port ${port}`));
+}
+
+module.exports = { app };

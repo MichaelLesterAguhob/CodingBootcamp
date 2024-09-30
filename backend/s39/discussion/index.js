@@ -96,7 +96,7 @@ app.put("/change-password", (req, res) => {
 	for(let i = 0; i < users.length; i++) {
         if(users[i].username === req.body.username) {
             users[i].password = req.body.password;
-            message =  `User ${ users[i].username }\'s password has been updated`;
+            message =  `User ${ users[i].username }\'s password has been updated.`;
         } else {
             message = "User does not exist";
         }

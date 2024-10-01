@@ -5,7 +5,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const taskRoute = require("./routes/taskRoutes.js")
 // server setup
-const app = express();
+const app = express(); 
 const port = 4000;
 
 // middlewares

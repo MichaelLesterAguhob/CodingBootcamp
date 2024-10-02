@@ -1,31 +1,49 @@
-
+// Basic ExpressJS Server
+// [SECTION] Dependencies and Modules
 const express = require("express");
 const mongoose = require("mongoose");
+// use the "require" directive to load the cors module which allows our backend application to be available to our frontend application.
+// CORS means Cross Origin Resource Sharing
 const cors = require("cors");
+const userRoutes = require('./routes/user');
+const courseRoutes = require('./routes/course')
 
+// [SECTION] Server setup
 const app = express();
+// [SECTION] Environment Setup
+// use the "require" directive to load the package dotenv conifguration in order to use the environment variables. This helps in hiding sensitive information/credentials in our application
+// Note: best practice is to create a .env and install dot env package at the start of your development
 require('dotenv').config();
 
+// [SECTION] Database Connection
 mongoose.connect(process.env.MONGODB_STRING);
 
-mongoose.connection.on('open', () => console.log('Now connected to MongoDB Atlas'));
+mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas'));
 
+// [SECTION] Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-    origin: ['http://localhost:8000'],
-    credentials: true,
-    optionSuccessStatus: 200,
-    // methods: ['GET', 'POST'],
-    // allowedHeaders: ['Content-Type', 'Authorization]
+	origin: ['http://localhost:8000'], // allows requests from this client URL only. This is an array because multiple URL can be added for connection.
+	credentials: true, // allow credentials (e.g. cookies, authorization headers)
+	optionsSuccessStatus: 200, // provides a status code for successful OPTIONS request
+	// methods: ['GET', 'POST'], // allow only specified HTTP methods
+	// allowedHeaders: ['Content-Type', 'Authorization'] // allow only specified headers
 }
 
 app.use(cors(corsOptions));
 
-if(require.main == module) {
-    app.listen(process.env.PORT, () => console.log(`API is now online on pot ${process.env.PORT}`));
-}
+// [SECTION] Backend Routes
+// defines the "/users" endpoint will be incuded for all user routes in the users file. groups all routes inside the userRoutes under /users.
+// http://localhost:4000/users
+app.use('/users', userRoutes);
+app.use('/courses', courseRoutes);
+
+// [SECTION] Server Response
+if(require.main === module) {
+	// process.env allows access to the .env file and finds the value equal to PORT
+	app.listen(process.env.PORT, () => console.log(`API is now online on port ${process.env.PORT}`));
+};
 
 module.exports = {app, mongoose};
-

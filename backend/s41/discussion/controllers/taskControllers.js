@@ -34,7 +34,7 @@ module.exports.updateTask = (taskId, reqBody) => {
         if(error) {
             console.log(error);
             return false;
-        }
+        } 
 
         result.name = reqBody.name;
         return result.save().then((updatedTask, saveErr) => {

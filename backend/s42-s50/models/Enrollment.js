@@ -27,3 +27,5 @@ const enrollmentSchema = new mongoose.Schema({
     default: "Enrolled"
   }
 });
+
+module.exports = mongoose.model('Enrollment', enrollmentSchema);

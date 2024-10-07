@@ -2,9 +2,8 @@
 const express = require("express");
 const userController = require("../controllers/user");
 const passport = require('passport');
-const { isLoggedIn } = require('../auth');
 
-const { verify } = require("../auth");
+const { verify, isAdmin, isLoggedIn, verifyAdmin } = require("../auth");
 
 const router = express.Router();
 
@@ -61,5 +60,7 @@ router.get('/google', passport.authenticate('google', {
   router.put('/reset-password', verify, userController.resetPassword);
 
   router.put('/profile', verify, userController.updateProfile);
+
+  router.put('/updateAdmin', verify, verifyAdmin, userController.updateUserByAdmin);
 
 module.exports = router;

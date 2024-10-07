@@ -1,5 +1,6 @@
 const Course = require("../models/Course");
 const { errorHandler } = require("../auth");
+const { find } = require("../models/User");
 
 module.exports.addCourse = (req, res) => {
   let newCourse = new Course({
@@ -156,3 +157,24 @@ module.exports.getEmailsOfEnrolledUsers = async (req, res) => {
         res.status(500).json({ message: 'An error occurred while retrieving enrolled users' });
     }
 };
+
+module.exports.searchCoursesByPrice = async (req, res) => {
+
+  const {minPrice, maxPrice} = req.body;
+
+  if(minPrice == null || maxPrice == null) {
+    return res.status(400).send({ message: "minPrice and maxPrice are required." });
+  }
+
+  try {
+
+      const courses = await Course.find({ 
+        price: {$gte: minPrice, $lte: maxPrice} 
+      });
+
+      return res.status(200).send({courses})
+  } catch(error) {
+      console.error(error);
+      return res.status(500).send({ message: 'Failed to get courses by price range' })
+  }
+}

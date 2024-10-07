@@ -170,7 +170,7 @@ module.exports.updateUserByAdmin = async (req, res) => {
   const userId = req.body.id;
 
   if (!userId) {
-      return res.status(400).json({ message: 'User ID is required.' });
+      return res.status(400).send({ message: 'User ID is required.' });
   }
 
   try {
@@ -179,13 +179,35 @@ module.exports.updateUserByAdmin = async (req, res) => {
       );
 
       if (!updatedUser) {
-          return res.status(404).json({ message: 'User not found.' });
+          return res.status(404).send({ message: 'User not found.' });
       }
 
-      return res.status(200).json({ message: 'User updated as admin successfully.' });
+      return res.status(200).send({ message: 'User updated as admin successfully.' });
   } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: 'Failed to update user.' });
+      return res.status(500).send({ message: 'Failed to update user.' });
   }
 }
 
+// Stretch Goal
+module.exports.updateEnrollmentStatus = async (req, res) => {
+    const userId = req.body.id;
+    const enrollmentStatus = req.body.status;
+
+    try {
+
+      const updatedStatus = await Enrollment.findOneAndUpdate(
+        {userId : userId}, {status: enrollmentStatus}, {new:true}
+      )
+
+      if (!updatedStatus) {
+          return res.status(404).json({ message: 'User not found.' });
+      }
+
+      return res.status(200).send({ message: 'User enrollment status updated successfully.' });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send({ message: 'Failed to update user enrollment status.' });
+    }
+    
+}

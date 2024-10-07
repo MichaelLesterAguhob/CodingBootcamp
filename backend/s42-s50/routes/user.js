@@ -63,4 +63,8 @@ router.get('/google', passport.authenticate('google', {
 
   router.put('/updateAdmin', verify, verifyAdmin, userController.updateUserByAdmin);
 
+  // stretch goal
+  router.put('/updateEnrollmentStatus', verify, verifyAdmin, userController.updateEnrollmentStatus);
+
+  
 module.exports = router;

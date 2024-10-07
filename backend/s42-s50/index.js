@@ -5,8 +5,12 @@ const mongoose = require("mongoose");
 // use the "require" directive to load the cors module which allows our backend application to be available to our frontend application.
 // CORS means Cross Origin Resource Sharing
 const cors = require("cors");
+const passport = require("passport");
+const session = require("express-session");
+require('./passport.js');
+
 const userRoutes = require('./routes/user');
-const courseRoutes = require('./routes/course')
+const courseRoutes = require('./routes/course');
 
 // [SECTION] Server setup
 const app = express();
@@ -33,6 +37,14 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
+
+app.use(session({
+	secret: process.env.clientSecret,
+	resave: false,
+	saveUninitialized: false
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
 // [SECTION] Backend Routes
 // defines the "/users" endpoint will be incuded for all user routes in the users file. groups all routes inside the userRoutes under /users.

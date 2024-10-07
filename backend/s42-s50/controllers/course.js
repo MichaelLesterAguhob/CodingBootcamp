@@ -120,3 +120,39 @@ module.exports.activateCourse = (req, res) => {
       })
       .catch((error) => errorHandler(error, req, res));
   };
+
+
+  module.exports.searchCoursesByName = async (req, res) => {
+    try {
+      const { courseName } = req.body;
+  
+      // Use a regular expression to perform a case-insensitive search
+      const courses = await Course.find({
+        name: { $regex: courseName, $options: 'i' }
+      });
+  
+      res.send(courses);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ error: 'Internal Server Error' });
+    }
+  };
+
+
+module.exports.getEmailsOfEnrolledUsers = async (req, res) => {
+    const courseId = req.params.courseId;
+    try {
+        const enrollments = await Enrollment.find({ 'enrolledCourses.courseId': courseId });
+
+        if (!enrollments.length) {
+            return res.status(404).json({ message: 'Course not found' });
+        }
+        const userIds = enrollments.map(enrollment => enrollment.userId);
+        const enrolledUsers = await User.find({ _id: { $in: userIds } });
+        const emails = enrolledUsers.map(user => user.email);
+        res.status(200).json({ userEmails: emails });
+
+    } catch (error) {
+        res.status(500).json({ message: 'An error occurred while retrieving enrolled users' });
+    }
+};

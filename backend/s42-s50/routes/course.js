@@ -20,4 +20,10 @@ router.patch("/:id/archive", verify, verifyAdmin, courseController.archiveCourse
 router.patch("/:id/activate", verify, verifyAdmin, courseController.activateCourse
 );
 
+router.patch("/:courseId/activate", verify, verifyAdmin, courseController.activateCourse);
+
+router.post('/search', courseController.searchCoursesByName);
+
+router.get('/:courseId/enrolled-users', courseController.getEmailsOfEnrolledUsers);
+
 module.exports = router;

@@ -126,3 +126,41 @@ module.exports.getEnrollments = (req, res) => {
     .catch((err) => errorHandler(err, req, res));
 };
 
+
+
+module.exports.resetPassword = async (req, res) => {
+  try {
+    const { newPassword } = req.body;
+
+    const { id } = req.user; 
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    await User.findByIdAndUpdate(id, { password: hashedPassword });
+
+    res.status(200).json({ message: 'Password reset successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
+module.exports.updateProfile = async (req, res) => {
+  try {
+
+    const userId = req.user.id;
+    const { firstName, lastName, mobileNo } = req.body;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { firstName, lastName, mobileNo },
+      { new: true }
+    );
+
+    res.send(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ message: 'Failed to update profile' });
+  }
+}

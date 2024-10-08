@@ -73,7 +73,7 @@ module.exports.updateCourse = (req, res)=>{
         if (course) {
             res.status(200).send({ success: true, message: 'Course updated successfully'});
         } else {
-            res.status(404).send({ messgae: 'Course not found'});
+            res.status(404).send({ message: 'Course not found'});
         }
     })
     .catch(error => errorHandler(error, req, res));

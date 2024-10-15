@@ -52,9 +52,9 @@ module.exports.loginUser = (req, res) => {
   return User.findOne({ email: req.body.email })
     .then((result) => {
       if (!result) { 
-        return res.status(404).send({ message: "No email found" });
+        return res.status(404).send({ message: "Email does not exist" });
       } else {
-
+ 
         const isPasswordCorrect = bcrypt.compareSync(req.body.password, result.password);
         if (isPasswordCorrect) {
 		        return res.status(200).send({ message: "User logged in successfully", access : auth.createAccessToken(result)});

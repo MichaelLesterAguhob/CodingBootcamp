@@ -4,6 +4,7 @@ import {Container} from 'react-bootstrap';
 import AppNavBar from './components/AppNavBar';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
+import News from './pages/News'
 
 // import Banner from './components/Banner';
 // import Highlights from './components/HighLights';
@@ -15,6 +16,7 @@ function App() {
       <Container>
           <Home />
           <Courses />
+          <News />
       </Container>
       {/* <h1>Hello World</h1> */}
     </>

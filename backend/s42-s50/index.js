@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-	origin: ['http://localhost:8000'], // allows requests from this client URL only. This is an array because multiple URL can be added for connection.
+	origin: ['http://localhost:8000', 'http://localhost:3000'], // allows requests from this client URL only. This is an array because multiple URL can be added for connection.
 	credentials: true, // allow credentials (e.g. cookies, authorization headers)
 	optionsSuccessStatus: 200, // provides a status code for successful OPTIONS request
 	// methods: ['GET', 'POST'], // allow only specified HTTP methods

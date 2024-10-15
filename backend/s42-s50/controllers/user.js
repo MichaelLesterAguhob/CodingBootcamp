@@ -30,15 +30,15 @@ module.exports.registerUser = (req, res) => {
   const { firstName, lastName, email, mobileNo, password } = req.body;
 
   if(!isValidEmail(email)) {
-    return res.status(400).send({ message: 'Invalid email format.'});
+    return res.status(400).send({ message: 'Email invalid'});
   } else if(!isValidMobileNo(mobileNo)) {
-    return res.status(400).send({ message: 'Mobile number is invalid.'});
+    return res.status(400).send({ message: 'Mobile number is invalid'});
   } else if(!isValidPassword(password)) {
-    return res.status(400).send({ message: 'Password must be atleast 8 characters long.' });
+    return res.status(400).send({ message: 'Password must be atleast 8 characters' });
   }
 
 	return newUser.save()
-    .then((result) => res.status(201).send({ message: 'User registered successfully', result}))
+    .then((result) => res.status(201).send({ message: 'User successfully registered', result}))
     .catch(err => errorHandler(err, req, res))
 };
 

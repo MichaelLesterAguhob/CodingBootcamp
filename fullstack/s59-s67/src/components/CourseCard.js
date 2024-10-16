@@ -15,7 +15,7 @@ export default function CourseCard({ courseProp }) {
 
     const [count, setCount] = useState(0);
     const [slots, setSlots] = useState(10);
-    console.log(useState(0));
+    // console.log(useState(0));
 
     function enroll() {
         if (slots > 0) {

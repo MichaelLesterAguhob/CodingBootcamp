@@ -93,7 +93,7 @@ module.exports.getProfile = (req, res) => {
             return res.status(404).send({ message: "User not found" });
         }
         user.password = "";
-        return res.status(200).send({user});
+        return res.status(200).send(user);
     })
     .catch(err => errorHandler(err, req, res))
 };

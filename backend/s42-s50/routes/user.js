@@ -13,7 +13,7 @@ router.post("/login", userController.loginUser);
 
 router.post("/check-email", userController.checkEmailExists);
 
-router.post("/details", verify, userController.getProfile);
+router.get("/details", verify, userController.getProfile);
 
 router.post('/enroll', verify, userController.enroll);
 

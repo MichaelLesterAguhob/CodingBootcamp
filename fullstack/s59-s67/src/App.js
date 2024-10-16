@@ -1,6 +1,8 @@
 import "./App.css";
+import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { UserProvider } from "./context/UserContext";
 
 import AppNavBar from "./components/AppNavBar";
 // import Banner from './components/Banner'
@@ -16,28 +18,65 @@ import Error from './pages/Error';
 
 
 function App() {
+    const [user, setUser] = useState({
+        id: null,
+        isAdmin: null
+    })
+
+    function unsetUser() {
+        localStorage.clear();
+    }
+
+    useEffect(() => {
+        // console.log(user);
+        // console.log(localStorage);
+    }, [user]);
+
+    useEffect(() => {
+
+        if(localStorage.getItem("token") !== null) {
+
+            fetch('http://localhost:4000/users/details', {
+                headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}
+            })
+            .then(res => res.json())
+            .then(data => {
+                setUser({
+                    id: data._id,
+                    isAdmin: data.isAdmin
+                })
+            })
+            
+        } else {
+            setUser({
+                id: null,
+                isAdmin: null
+            })
+        }
+    })
+
   return (
-    <Router>
-      <AppNavBar />
-
-      <Container>
-        <Routes>
-
-            <Route path='/' element={<Home />} />
-            <Route path='/courses' element={<Courses />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/logout' element={<Logout />} />
-            <Route path="*" element={<Error />} />
-            <Route path='/news' element={
-            <>
-              <News />
-              <FeedbackForm /> 
-            </>
-          } /> 
-         </Routes>
-      </Container>   
-    </Router>
+    <UserProvider value={{user, setUser, unsetUser}}>
+        <Router>
+            <AppNavBar />
+            <Container>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/courses' element={<Courses />} />
+                    <Route path='/register' element={<Register />} />
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/logout' element={<Logout />} />
+                    <Route path="*" element={<Error />} />
+                    <Route path='/news' element={
+                    <>
+                    <News />
+                    <FeedbackForm /> 
+                    </>
+                } /> 
+                </Routes>
+            </Container>   
+        </Router>
+    </UserProvider>
   );
 }
 

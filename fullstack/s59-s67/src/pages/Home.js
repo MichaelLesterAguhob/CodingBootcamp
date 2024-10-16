@@ -1,5 +1,5 @@
 import Banner from '../components/Banner';
-import Highlights from '../components/Highlights';
+import Highlights from '../components/HighLights';
 
 export default function Home() {
   const homeBannerData = {

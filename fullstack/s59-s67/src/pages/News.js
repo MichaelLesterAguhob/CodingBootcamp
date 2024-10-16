@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import newsData from "../data/newsData";
 import NewsCard from "../components/NewsCard";
 
-export default function News() {
+function News() {
   const news = newsData.map(news => (
     <NewsCard key={news.id} newsProp={news} />
   ));
@@ -39,7 +39,12 @@ function FeedbackForm() {
     setFeedback('');
   };
 
+  const isLoggedIn = localStorage.getItem("token") !== null;
+
   return (
+
+    isLoggedIn ? (
+
     <Form onSubmit={sendFeedback}>
       <h1 className='my-5 text-center'>Feedback</h1>
 
@@ -70,7 +75,9 @@ function FeedbackForm() {
         Send Feedback
       </Button>
     </Form>
+    
+    ) : null
   );
 }
 
-// export { FeedbackForm, News };
+export { FeedbackForm, News };

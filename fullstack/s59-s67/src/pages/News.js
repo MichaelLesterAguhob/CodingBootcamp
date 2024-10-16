@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import newsData from "../data/newsData";
 import NewsCard from "../components/NewsCard";
+import  UserContext  from '../context/UserContext';
 
 function News() {
   const news = newsData.map(news => (
@@ -12,21 +13,19 @@ function News() {
     <>
       <h1>News</h1>
       {news}
+      <FeedbackForm />
     </>
   );
 }
 
 function FeedbackForm() {
+  const { user } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
-  const [isActive, setisActive] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    if (!email || !feedback) {
-      setisActive(false);
-    } else {
-      setisActive(true);
-    }
+    setIsActive(email && feedback);
   }, [email, feedback]);
 
   // Function to handle form submission
@@ -43,7 +42,7 @@ function FeedbackForm() {
 
   return (
 
-    isLoggedIn ? (
+    user ? (
 
     <Form onSubmit={sendFeedback}>
       <h1 className='my-5 text-center'>Feedback</h1>

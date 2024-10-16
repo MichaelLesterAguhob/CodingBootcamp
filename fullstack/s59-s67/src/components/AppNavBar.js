@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -6,8 +6,10 @@ import { Link, NavLink } from "react-router-dom";
 import UserContext from "../context/UserContext";
 
 export default function AppNavbar() {
-    // const [user, setUser] = useState(localStorage.getItem("token"));
-    const {user} = useContext(UserContext);
+
+  const { user } = useContext(UserContext);
+
+  // const [user, setUser] = useState(localStorage.getItem("token"));
 
   return (
     <Navbar expand="lg" className="bg-light">
@@ -29,12 +31,23 @@ export default function AppNavbar() {
               News
             </Nav.Link>
             {
-              user.id !== null ?
-                  <Nav.Link  as={NavLink} to='/logout' exact='true'>Logout</Nav.Link>
-              :
+            user.id !== null ? 
               <>
-                <Nav.Link as={NavLink} to="/login" exact="true">Login</Nav.Link>
-                <Nav.Link as={NavLink} to="/register" exact="true">Register</Nav.Link>
+                <Nav.Link as={NavLink} to="/profile" exact="true">
+                  Profile
+                </Nav.Link>
+                <Nav.Link as={NavLink} to="/logout" exact="true">
+                  Logout
+                </Nav.Link>
+              </>
+             : 
+              <>
+                <Nav.Link as={NavLink} to="/login" exact="true">
+                  Login
+                </Nav.Link>
+                <Nav.Link as={NavLink} to="/register" exact="true">
+                  Register
+                </Nav.Link>
               </>
             }
           </Nav>

@@ -40,7 +40,7 @@ module.exports.getAllCourses = (req, res) => {
 module.exports.getAllActive = (req, res) => {
   Course.find({ isActive: true }).then((result) => {
         if(result.length > 0) {
-          res.status(200).send({result})
+          res.status(200).send(result)
         } else {
           return res.status(404).send({ message: 'No active courses found'});
         }

@@ -11,6 +11,7 @@ require('./passport.js');
 
 const userRoutes = require('./routes/user');
 const courseRoutes = require('./routes/course');
+const newsRoutes = require("./routes/news");
 
 // [SECTION] Server setup
 const app = express();
@@ -51,6 +52,7 @@ app.use(passport.session());
 // http://localhost:4000/users
 app.use('/users', userRoutes);
 app.use('/courses', courseRoutes);
+app.use("/news", newsRoutes);
 
 // [SECTION] Server Response
 if(require.main === module) {

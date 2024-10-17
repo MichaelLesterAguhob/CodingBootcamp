@@ -20,7 +20,7 @@ export default function Courses() {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            setCourses(data.result.map(course => {
+            setCourses(data.map(course => {
                 return <CourseCard key={course._id} courseProp={course} />
             }))
         })

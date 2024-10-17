@@ -1,5 +1,6 @@
 import Banner from '../components/Banner';
 import Highlights from '../components/HighLights';
+import FeaturedCourses from '../components/FeaturedCourses';
 
 export default function Home() {
   const homeBannerData = {
@@ -13,8 +14,7 @@ export default function Home() {
     <>
      
       <Banner data={homeBannerData} />
-      
-      
+      <FeaturedCourses />
       <Highlights />
     </>
   );

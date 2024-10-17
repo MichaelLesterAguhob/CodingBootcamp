@@ -21,9 +21,9 @@ export default function CourseView() {
         fetch(`http://localhost:4000/courses/specific/${courseId}`)
         .then(res => res.json())
         .then(data => {
-            setName(data.course.name);
-            setDescription(data.course.description);
-            setPrice(data.course.price);
+            setName(data.name);
+            setDescription(data.description);
+            setPrice(data.price);
         })
     }, [courseId])
 

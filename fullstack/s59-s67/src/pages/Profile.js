@@ -4,7 +4,7 @@ import UserContext from "../context/UserContext";
 import { Navigate } from "react-router-dom";
 
 export default function Profile() {
-    const [user, setUser] = useContext(UserContext);
+    const {user} = useContext(UserContext);
     const [details, setDetails] = useState({});
 
     useEffect(() => {
@@ -29,12 +29,15 @@ export default function Profile() {
         user.id === null ?
         <Navigate to="/courses" />
         :
-        <div>
+        <div className='bg-primary text-light p-5'>
             <h1>User Profile</h1>
-            <p>First Name: {details.firstName}</p>
-            <p>Last Name: {details.lastName}</p>
-            <p>Email: {details.email}</p>
-            <p>Mobile Number: {details.mobileNumber}</p>
+            <h4>{details.firstName} {details.lastName}</h4>
+            <p><hr/></p>
+            <h5>Contacts</h5>
+            <ul>
+                <li>Email: {details.email}</li>
+                <li>Mobile Number: {details.mobileNo}</li>
+            </ul>
         </div>
     );
 }

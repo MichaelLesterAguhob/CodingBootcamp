@@ -27,6 +27,14 @@ export default function AppNavbar() {
             <Nav.Link as={NavLink} to="/courses" exact="true">
               Courses
             </Nav.Link>
+            {
+                user.isAdmin === true ? 
+                <Nav.Link as={NavLink} to="/add-course" exact="true">
+                Add Course
+                </Nav.Link>
+                :
+                null
+            }
             <Nav.Link as={NavLink} to="/news" exact="true">
               News
             </Nav.Link>

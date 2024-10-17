@@ -52,7 +52,7 @@ module.exports.getAllActive = (req, res) => {
 module.exports.getCourse = (req, res) => {
     return Course.findById(req.params.id).then(course => {
       if(course) {
-        res.status(200).send({course});
+        res.status(200).send(course);
       } else {
         res.status(404).send({ message: 'Course not found'});
       }

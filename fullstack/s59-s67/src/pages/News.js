@@ -13,9 +13,8 @@ function News() {
     <>
       <h1>News</h1>
       {news}
-      <FeedbackForm />
     </>
-  );
+  ); 
 }
 
 function FeedbackForm() {
@@ -41,9 +40,7 @@ function FeedbackForm() {
   const isLoggedIn = localStorage.getItem("token") !== null;
 
   return (
-
-    user ? (
-
+    user.id !== null ? 
     <Form onSubmit={sendFeedback}>
       <h1 className='my-5 text-center'>Feedback</h1>
 
@@ -74,8 +71,8 @@ function FeedbackForm() {
         Send Feedback
       </Button>
     </Form>
-    
-    ) : null
+    : 
+    null
   );
 }
 

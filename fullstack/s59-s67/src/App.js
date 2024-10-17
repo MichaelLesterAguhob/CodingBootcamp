@@ -17,7 +17,7 @@ import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Error from './pages/Error';
 import Profile from './pages/Profile';
-
+import AddCourse from "./pages/AddCourse";
 
 function App() {
 
@@ -51,9 +51,7 @@ function App() {
                 isAdmin: data.isAdmin
             })
         })
-        
     } else {
-
         setUser({
             id: null,
             isAdmin: null
@@ -61,16 +59,13 @@ function App() {
     }
 }, []);
 
-
   return (
     <UserProvider value={{ user, setUser, unsetUser}}>
-
           <Router>
                 <AppNavBar />
 
                 <Container>
                   <Routes>
-
                       <Route path='/' element={<Home />} />
                       <Route path='/courses' element={<Courses />} />
                       <Route path='/courses/:courseId' element={<CourseView />} />
@@ -87,12 +82,9 @@ function App() {
                     } /> 
                   </Routes>
                 </Container>   
-
           </Router>
-
     </UserProvider>
   );
 }
 
 export default App;
-

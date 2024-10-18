@@ -1,21 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
-import UserContext from '../context/UserContext';
+import {Notyf} from 'notyf';
 
-const UpdateProfile = () => {
+const UpdateProfile = ({reloadData}) => {
 //   const { user } = useContext(UserContext);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [mobileNo, setMobileNo] = useState('');
 
-// console.log({user});
-//   useEffect(() => {
-
-//     if (user) {
-//       setFirstName(user.firstName || '');
-//       setLastName(user.lastName || '');
-//       setMobileNo(user.mobileNo || '');
-//     }
-//   }, [user]);
+   const notyf = new Notyf();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,8 +24,15 @@ const UpdateProfile = () => {
     })
     .then((res) => res.json())
     .then((data) => {
-      // Handle response (e.g., show a success message or handle errors)
-      console.log({data});
+      if(data.message === "Updated Successfully") {
+            notyf.success("Updated Successfully")
+            setFirstName('');
+            setLastName('');
+            setMobileNo('');
+            reloadData();
+      } else {
+            notyf.error("Failed to update profile")
+      }
     })
     .catch((error) => {
       console.error('Error updating profile:', error);

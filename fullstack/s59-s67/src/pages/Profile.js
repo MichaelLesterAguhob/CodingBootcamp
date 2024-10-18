@@ -28,6 +28,23 @@ export default function Profile() {
         });
     }, []);
 
+    const reloadData = () => {
+        fetch("http://localhost:4000/users/details", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if(data !== null) {
+                    setDetails(data)
+                } else if(data.message === "User not found") {
+                    alert("User not found.");
+                } else {
+                    alert("Something went wrong, kindly contact us for   assistance.");
+                }
+            });
+    }
 
     return (
         user.id === null ?
@@ -53,7 +70,7 @@ export default function Profile() {
         </Row>
         <Row className='pt-4 mt-4'>
             <Col>
-                <UpdateProfile />
+                <UpdateProfile reloadData={reloadData}/>
             </Col>
         </Row>
         </>

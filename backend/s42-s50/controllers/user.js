@@ -158,7 +158,7 @@ module.exports.updateProfile = async (req, res) => {
       { new: true }
     );
 
-    res.send(updatedUser);
+    res.status(200).send({message: "Updated Successfully", updatedUser});
   } catch (error) {
     console.error(error);
     res.status(500).send({ message: 'Failed to update profile' });

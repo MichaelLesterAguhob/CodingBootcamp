@@ -25,7 +25,7 @@ module.exports.addNews = (req, res) => {
         }
     }).catch(error => errorHandler(error, req, res));
 };
-
+ 
 module.exports.getAllNews = (req, res) => {
     return News.find({})
     .then(result => {

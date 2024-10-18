@@ -7,7 +7,7 @@ export default function PreviewCourses(prop) {
     return (
         <Col  xs={12} md={breakPoint} >
             <Card className="cardHighlight">
-                <Card.Body>
+                <Card.Body> 
                     <Card.Title className="text-center">
                         <Link to={`/courses/${_id}`}>{name}</Link>
                     </Card.Title>

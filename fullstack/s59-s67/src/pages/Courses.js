@@ -1,37 +1,47 @@
+import { useState, useEffect, useContext } from "react";
+import  UserContext  from "../context/UserContext"; 
+import AdminView from "../components/AdminView";  
+import UserView from "../components/UserView";    
 
-import { useState, useEffect } from 'react';
-// import coursesData from '../data/coursesData';
-import CourseCard from '../components/CourseCard'
 
 export default function Courses() {
-    // console.log(courseData);
-    // console.log(courseData[0]);
+  const [courses, setCourses] = useState([]);
+  const { user } = useContext(UserContext); 
 
-    const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    let fetchURL = user.isAdmin ? 'http://localhost:4000/courses/all' : 'http://localhost:4000/courses/';
+    fetch(fetchURL, {
+        headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCourses(data);
+      });
+  }, []);
 
-    // const courses = coursesData.map(course => {
-    //     return (
-    //         <CourseCard key={course.id} courseProp={course} />
-    //     )
-    // })
+  const fetchData = () => {
+    let fetchURL = user.isAdmin ? 'http://localhost:4000/courses/all' : 'http://localhost:4000/courses/';
+    fetch(fetchURL, {
+        headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCourses(data);
+      });
+  }
 
-    useEffect(() => {
-        fetch('http://localhost:4000/courses/')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setCourses(data.map(course => {
-                return <CourseCard key={course._id} courseProp={course} />
-            }))
-        })
-    }, [])
-
-    return (
+  return (
+        user.isAdmin ? 
         <>
             <h1>Courses</h1>
-            {/* <CourseCard courseProp={courseData[0]} /> */}
-
-            {courses}
-        </>
-    )
+            <AdminView coursesData={courses} fetchData={fetchData}/>  
+        </>   
+        : 
+          <>
+            <h1>Courses</h1>
+            <UserView coursesData={courses} />  
+          </>
+    );
 }

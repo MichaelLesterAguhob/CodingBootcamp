@@ -14,7 +14,7 @@ function likeNews() {
     } else {
         setCount(count + 1);
     }
-}
+} 
 
   return (
     <Card className="text-center">

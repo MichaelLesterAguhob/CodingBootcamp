@@ -149,11 +149,11 @@ module.exports.resetPassword = async (req, res) => {
 module.exports.updateProfile = async (req, res) => {
   try {
 
-    const userId = req.user.id;
+    const {id} = req.user;
     const { firstName, lastName, mobileNo } = req.body;
 
     const updatedUser = await User.findByIdAndUpdate(
-      userId,
+      id,
       { firstName, lastName, mobileNo },
       { new: true }
     );

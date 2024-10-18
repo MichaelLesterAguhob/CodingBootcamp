@@ -26,6 +26,6 @@ router.post('/search', courseController.searchCoursesByName);
 
 router.get('/:courseId/enrolled-users', courseController.getEmailsOfEnrolledUsers);
 
-router.get('/search', verify, courseController.searchCoursesByPrice)
+router.post('/search-by-price', verify, courseController.searchCoursesByPrice)
 
 module.exports = router;

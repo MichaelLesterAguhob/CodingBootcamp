@@ -28,7 +28,7 @@ module.exports.addCourse = (req, res) => {
 module.exports.getAllCourses = (req, res) => {
     return Course.find({}).then(result => {
       if(result.length > 0) {
-          res.status(200).send({ result })
+          res.status(200).send( result )
       } else {
         res.status(404).send({ message: 'No courses found' })
       }
@@ -172,7 +172,7 @@ module.exports.searchCoursesByPrice = async (req, res) => {
         price: {$gte: minPrice, $lte: maxPrice} 
       });
 
-      return res.status(200).send({courses})
+      return res.status(200).send(courses)
   } catch(error) {
       console.error(error);
       return res.status(500).send({ message: 'Failed to get courses by price range' })

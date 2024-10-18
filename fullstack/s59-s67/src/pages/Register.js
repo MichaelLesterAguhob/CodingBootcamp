@@ -2,10 +2,10 @@ import { useState, useEffect, useContext } from 'react';
 import { Form, Button } from  'react-bootstrap';
 import { Navigate } from 'react-router-dom';
 import  UserContext  from '../context/UserContext';
-
+import {Notyf} from 'notyf'
 
 export default function Register() {
-    
+    const notyf = new Notyf();
     const { user } = useContext(UserContext);
 
     // if (user) {
@@ -54,32 +54,22 @@ export default function Register() {
 
                 console.log(data);
 
-                if(data.message === 'User registered successfully') {
-
+                if(data.message === 'User successfully registered') {
                     setFirstName('');
                     setLastName('');
                     setEmail('');
                     setMobileNo('');
                     setPassword('');
                     setConfirmPassword('');
-
-                    alert('Registration successful');
-
+                    notyf.success('Registration successful');
                 } else if(data.message === 'Email invalid') {
-
-                    alert('Email is invalid')
-
+                    notyf.error('Email is invalid')
                 } else if(data.message === 'Mobile number is invalid') {
-
-                    alert('Mobile number is invalid');
-
-                } else if (data.message === 'Password must be 8 characters') {
-
-                    alert('Password must be atleast 8 characters');
-
+                    notyf.error('Mobile number is invalid');
+                } else if (data.message === 'Password must be atleast 8 characters') {
+                    notyf.error('Password must be atleast 8 characters');
                 } else {
-
-                    alert('Something went wrong');
+                    notyf.error('Something went wrong');
                 }
             })
         }

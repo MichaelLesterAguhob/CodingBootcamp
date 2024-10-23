@@ -22,27 +22,6 @@ const UserView = ({ coursesData }) => {
             <CourseSearchByPrice />
             {courses}
         </>
-
-    // <Container>
-    //   <h2 className="my-4">Available Courses</h2>
-    //   <Row>
-    //     {coursesData.map((course, index) => (
-    //       <Col md={4} key={index} className="mb-4">
-    //         <Card>
-    //           <Card.Body>
-    //             <Card.Title>{course.name}</Card.Title>
-    //             <Card.Subtitle>Description:</Card.Subtitle>
-    //             <Card.Text>{course.description}</Card.Text>
-    //             <Card.Subtitle>Price:</Card.Subtitle>
-    //             <Card.Text>{course.price}</Card.Text>
-    //             <Button variant="primary" >Details
-    //             </Button>
-    //           </Card.Body>
-    //         </Card>
-    //       </Col>
-    //     ))}
-    //   </Row>
-    // </Container>
   );
 };
 

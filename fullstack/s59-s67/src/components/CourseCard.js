@@ -15,7 +15,7 @@ export default function CourseCard({ courseProp }) {
     const { name, description, price, _id } = courseProp;
 
     // const [count, setCount] = useState(0);
-    // const [slots, setSlots] = useState(10);
+    // const [slots, setSlots] = useState(10); 
     // console.log(useState(0));
 
     // function enroll() {

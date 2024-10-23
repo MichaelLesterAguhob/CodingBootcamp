@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import {Notyf} from 'notyf';
+import {Notyf} from 'notyf'; 
 
 export default function EditCourse({ course, fetchData }) {
 

@@ -2,7 +2,7 @@
 import {useState, useEffect, useContext} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { Navigate, useNavigate } from 'react-router-dom';
-import {Swal} from 'sweetalert2';
+import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
 
 export default function AddGame(){
@@ -16,43 +16,32 @@ export default function AddGame(){
 
 	function createGame(e){
 		e.preventDefault();
-		
-		console.log(token);
 
 		fetch('http://localhost:4000/games/',{
-
 			method: 'POST',
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${token}`
 			},
 			body: JSON.stringify({
-
 				name: name,
 				description: description
-
 			})
 		})
 		.then(res => res.json())
 		.then(data => {
-
+            console.log(data)
             if (data.error === "Failed to save the game") {
-
 				Swal.fire({
-
-					icon: "error",
 					title: "Unsuccessful Game Creation",
+					icon: "error",
 					text: data.message
-
 				})
 
 			} else {
-
 				Swal.fire({
-
-					icon:"success",
-					title: "Game Added"
-
+					title: "Game Added",
+					icon:"success"
 				})
 
 				navigate("/games");

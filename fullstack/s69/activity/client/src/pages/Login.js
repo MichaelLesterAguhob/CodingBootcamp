@@ -15,19 +15,15 @@ export default function Login() {
 
 
     function authenticate(e) {
-
         e.preventDefault();
 		fetch('http://localhost:4000/users/login',{
-
 		method: 'POST',
 		headers: {
 			"Content-Type": "application/json"
 		},
-		body: JSON.parse({
-
+		body: JSON.stringify({
 			email: email,
 			password: password
-
 		})
 	})
 	.then(res => res.json())
@@ -35,7 +31,7 @@ export default function Login() {
 		
 		if(data.access){
 
-			localStorage.getItem('token', data.access);
+			localStorage.setItem('token', data.access);
 			retrieveUserDetails(data.access);
 
 			Swal.fire({
@@ -73,6 +69,7 @@ export default function Login() {
 
             setUser({
               id: data.user._id,
+              isAdmin: data.user.isAdmin
             });
 
         })

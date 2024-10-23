@@ -8,77 +8,54 @@ export default function GameCard({game}) {
     const navigate = useNavigate();
 
     function updateGameStatus(id) {
-
             fetch(`http://localhost:4000/games/${id}`,{
-
             method: 'PATCH',
             headers: {
                 "Content-Type": "application/json",
-                'Authorization': `Bearer ${localStorage.getItem("token")}`
+                Authorization: `Bearer ${localStorage.getItem("token")}`
             }
         })
         .then(res => res.json())
         .then(data => {
-
             console.log(data)
-
             if (data.error === "Error in Saving") {
-
                 Swal.fire({
-
                     icon: "error",
                     title: "Unsuccessful Game Update",
                     text: data.message
-
                 })
-
             } else {
-
                 Swal.fire({
-
                     icon:"success",
                     title: "Game Updated"
-
                 })
-
                 window.location.reload() 
             }
-
         })
     }
 
+
     function deleteGame(id) {
-
             fetch(`http://localhost:4000/games/${id}`,{
-
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
-                'Authorization': `Bearer ${localStorage.getItem("token")}`
+                Authorization: `Bearer ${localStorage.getItem("token")}`
             }
         })
         .then(res => res.json())
         .then(data => {
-
             if (data.error === "Error in Saving") {
-
                 Swal.fire({
-
                     icon: "error",
                     title: "Unsuccessful Game Deletion",
                     text: data.message
-
                 })
-
             } else {
-
                 Swal.fire({
-
                     icon:"success",
                     title: "Game Deleted"
-
                 })
-
                 window.location.reload() 
             }
 

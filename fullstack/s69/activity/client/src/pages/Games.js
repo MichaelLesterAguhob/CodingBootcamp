@@ -12,7 +12,7 @@ export default function Games() {
 	const fetchData = () => {
 		fetch('http://localhost:4000/games/all', {
 			headers: {
-				Authorization: `Bearer ${ localStorage.getItem('token') }`
+				Authorization: `Bearer ${localStorage.getItem('token')}`
 			}
 		})
 		.then(res => res.json())
@@ -35,30 +35,21 @@ export default function Games() {
 	return(
 		<>
             {
-            	user
-                ?
-                    games.length > 0
-
-                        ?
+            	user.id !== null ?
+                    games.length > 0 ?
                         <>  
-                        <h1 className='text-center mt-5'>Games</h1>
-                        <Row> 
-                            
-                                {   
-
-                        games.map(game => { 
-
-                                        return (
-                                            <Col md={3}>
-                                                <GameCard game={game} />
-                                            </Col>
-                                        )
-                                        
-                                    })
-                                }   
-
-                        </Row>
-
+                            <h1 className='text-center mt-5'>Games</h1>
+                            <Row> 
+                                    {   
+                                        games.map(game => { 
+                                            return (
+                                                <Col md={3}>
+                                                    <GameCard game={game} />
+                                                </Col>
+                                            )
+                                        })
+                                    }   
+                            </Row>
                         </>
                         :
                         <>

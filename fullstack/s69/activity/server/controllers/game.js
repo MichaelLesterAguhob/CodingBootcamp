@@ -8,7 +8,7 @@ module.exports.getAllGames = (req, res) => {
 
 }
 
-module.exports.addGame = (request,res) => {
+module.exports.addGame = (req,res) => {
 
 	//console.log(req.body)
     
@@ -28,7 +28,7 @@ module.exports.updateGameStatus = (req, res) => {
 		status: 'completed'
 	}
 
-	return Game.update(req.params.gameId, updatedGame)
+	return Game.findByIdAndUpdate(req.params.gameId, updatedGame)
 	.then((game) => res.status(200).send({ 
     	message: 'game updated successfully', 
     	updatedGame: game 

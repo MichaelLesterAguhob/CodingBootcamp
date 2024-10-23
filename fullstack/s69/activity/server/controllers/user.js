@@ -1,13 +1,13 @@
-const User = require("../models/user");
-const bcrypt = require("bcrypt");
+const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 let salt = bcrypt.genSaltSync(10);
 const auth = require("../auth");
 
 module.exports.registerUser = (req,res) => {
-   
+
 		let newUser = new User({
 			email : req.body.email,
-			password : bcrypt.hashSync(req.body.password, 10)
+			password: bcrypt.hashSync(req.body.password, salt)
 		})
 
 		return newUser.save().then((user) => res.status(201).send({ message: "Registered Successfully" })).catch(err => res.status(400).send({ error: "Error in saving" }))   

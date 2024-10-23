@@ -4,8 +4,8 @@ const gameController = require("../controllers/game");
 const { verify } = require("../auth");
 
 
-router.get("/all", verify, gameController.getAllGames)
 router.post("/", verify, gameController.addGame)
+router.get("/all", verify, gameController.getAllGames)
 router.patch("/:gameId", verify, gameController.updateGameStatus)
 router.delete("/:gameId", verify, gameController.deleteGame)
 

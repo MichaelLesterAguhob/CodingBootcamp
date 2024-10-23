@@ -16,8 +16,6 @@ export default function Register() {
     const [isActive, setIsActive] = useState(false);
 
 	function registerUser(e) {
-        console.log("register")
-		// Prevents page redirection via form submission
 		e.preventDefault();
 
 		fetch('http://localhost:4000/users/register',{

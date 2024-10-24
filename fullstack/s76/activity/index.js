@@ -2,11 +2,11 @@
 // Input should be an array, if not an array, return undefined. 
 
 function calculateTotalAmount(orderAmounts) {
-    if(!Array.isArray(orderAmounts) || !orderAmounts.every(Number.isInteger)) {
+    if(!Array.isArray(orderAmounts) || !orderAmounts.every(num => typeof num === 'number')) {
         return undefined;
     }
     let totalOrderAmount = orderAmounts.reduce((total, amount) => total + amount, 0);
-    return totalOrderAmount;
+    return parseFloat(totalOrderAmount.toFixed(1));
 }
 
 // Question #2: Create a program that takes an array of blog post titles and a keyword. 
@@ -14,10 +14,13 @@ function calculateTotalAmount(orderAmounts) {
 // Return undefined if the inputs are not of the expected data types
 
 function filterTitlesByKeyword(titles, keyword) {
-    if(!Array.isArray(titles)) {
+    if(!Array.isArray(titles) || !titles.every(title => typeof title === 'string')) {
         return undefined;
     }
     let found = titles.filter(title => title.toLowerCase().includes(keyword.toLowerCase()))
+    if(!found) {
+        return "No matching titles found.";
+    }
     return found;
 }
 
@@ -31,7 +34,7 @@ function formatUsernames(usernames) {
         return undefined;
     }
     let modifiedUserNames = usernames.map((uname) => {
-        return 'User:'+uname[0].toUpperCase()+uname.slice(1, uname.length);
+        return 'User: '+uname[0].toUpperCase()+uname.slice(1, uname.length);
     })
     return modifiedUserNames;
 }
@@ -55,9 +58,14 @@ function optimizeDeliverySchedule(datesWarehouse1, datesWarehouse2) {
 
 function removeLowScoresAndCalculateAverage(scores, threshold) {
     if(!Array.isArray(scores) || !scores.every(Number.isInteger)) {
+            console.log("not int")
         return undefined;
     }
     let filteredScores = scores.filter(score => score >= threshold);
+    if(filteredScores.length === 0) {
+        return undefined;
+    }
+
     let totalScores = filteredScores.reduce((total, score) => total + score, 0);
     return parseFloat((totalScores/filteredScores.length).toFixed(2));
 }

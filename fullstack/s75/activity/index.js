@@ -7,15 +7,17 @@ function isPalindrome(string) {
         return undefined;
     }
     if(string.length < 3) {
-        return 'Palindrome words should be 3 characters and up';
+        return undefined;
     }
     let word = string.toLowerCase().replace(/\s+/g, '');
     let reversedWord = word.split('').reverse().join('');
 
     if(word == reversedWord) {
-        return `${string} is Palindrome`;
+        // return `${string} is Palindrome`;
+        return true;
     } else {
-        return `${string} is Not Palindrome`;
+        // return `${string} is Not Palindrome`;
+        return false;
     }
 }
 
@@ -40,13 +42,22 @@ function isIsogram(text) {
 // The program should check if the input is a positive integer representing a year. If the input is not a valid year (i.e., not a positive integer), the program should return undefined.
 
 function isLeapYear(year) {
-    if(typeof year !== 'number' || year < 0) {
+    if(typeof year !== 'number' || year < 1) {
         return undefined;
     } 
+
     if(year % 4 === 0 ) {
-        return  `${year} is a leap year!`;
+        if(year % 100 === 0 ) {
+            if(year % 400 === 0 ) {
+                return true
+            }else {
+                return false
+            }
+        }else {
+        return false
+    }
     } else {
-        return  `${year} is Not a leap year!`;
+        return false
     }
 }
 
@@ -61,9 +72,9 @@ function purchase(age, price) {
         return undefined;
     }
     if(age >= 13 && age <= 21) {
-        return `Price for aged 22-64 : ${Math.floor(price - (price * .20))}`
+        return Math.floor(price - (price * .20))+'.00' 
     } else if(age >= 22 && age <= 64) {
-        return `Price for aged 22-64 : ${Math.floor(price)}`
+        return Math.floor(price)+'.00'
     }
 }
 
@@ -73,13 +84,17 @@ function purchase(age, price) {
 // If letter is invalid, return undefined.
 
 function countLetter(letter, sentence) {
+
     let count = 0;
-    if(typeof letter !== 'string' || letter.length != 1) {
-        return undefined;
+    if(typeof letter !== 'string' || letter.length > 1) {
+        return 'Invalid letter input';
+    }
+    if(sentence.length <= 1) {
+        return 'Invalid sentence input';
     }
 
     for(let i = 0; i < sentence.length; i++) {
-        if(sentence[i] == letter) {
+        if(sentence[i].toLowerCase() == letter.toLowerCase()) {
             count ++
         }
     }

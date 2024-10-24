@@ -71,11 +71,11 @@ function purchase(age, price) {
     if(age < 13) {
         return undefined;
     }
-    if(age >= 13 && age <= 21) {
+    if(age >= 13 && age <= 21 || age >= 65) {
         return Math.floor(price - (price * .20))+'.00' 
     } else if(age >= 22 && age <= 64) {
         return Math.floor(price)+'.00'
-    }
+    } 
 }
 
 // Question #5: Develop a program that calculates the frequency of a specific letter's appearance within a given sentence.
@@ -98,7 +98,7 @@ function countLetter(letter, sentence) {
             count ++
         }
     }
-    return count;
+    return (count < 1) ? undefined : count;
 }
 
 //Do not modify

@@ -6,6 +6,10 @@
 let library =[{}];
 
 function addBook(library, newBook) {
+
+    if(typeof newBook.title !== 'string' || typeof newBook.author !== 'string' || !newBook.year > 0) {
+        return false;
+    }
     let uniqueID = library.reduce((max, curr) => {
         return (curr.id > max) ? curr.id : max;
     }, 0)
@@ -18,7 +22,7 @@ function addBook(library, newBook) {
         status: true
     }
     library.push(newBk);
-    return library;
+    return true;
 }
 
 // Question #2: Retrieve either details of a specific book by its ID or an array of details for all books, optionally filtered by availability. 
@@ -27,13 +31,16 @@ function getBooks(library, id = null, filterAvailable = null) {
     let getBooksResult;
     
     if(id !== null && filterAvailable !== null) {
-        getBooksResult = library.filter(book => book.id == id && book.status === filterAvailable)
+        getBooksResult = library.filter(book => book.id == id && book.status === filterAvailable);
     }
     else if(id !== null) {
-        getBooksResult = library.filter(book => book.id === id)
+        getBooksResult = library.filter(book => book.id === id);
     }
     else if(filterAvailable !== null) {
-        getBooksResult = library.filter(book => book.status === filterAvailable)
+        getBooksResult = library.filter(book => book.status === filterAvailable);
+    }
+    else {
+        getBooksResult = library;
     }
 
     return getBooksResult;
@@ -46,9 +53,11 @@ function updateBookAvailability(library, id, isAvailable) {
    library.map(book => {
         if(book.id === id) {
             book.status = isAvailable;
+        } else {
+            return false;
         }
    })
-   return library;
+   return true;
 }
 
 // Question #4: Remove a book by its ID only if it is marked as unavailable.
@@ -56,8 +65,10 @@ function removeBook(library, id) {
     let index = library.findIndex(book => book.id === id && book.status === false);
     if(index !== -1) {
         library.splice(index, 1);
+        return true
+    } else {
+        return false;
     }
-    return library;
 }
 
 // Question #5: List all books, with an option to filter by their availability status.

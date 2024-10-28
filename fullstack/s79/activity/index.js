@@ -50,14 +50,13 @@ function getBooks(library, id = null, filterAvailable = null) {
 // Question #3: Update a book's availability status after validating the book exists and ensuring the new status differs from the current.
 
 function updateBookAvailability(library, id, isAvailable) {
-   library.map(book => {
-        if(book.id === id) {
-            book.status = isAvailable;
+    let index = library.findIndex(book => book.id === id);
+        if(index !== -1) {
+            book[index].status = isAvailable;
+            return true;
         } else {
             return false;
         }
-   })
-   return true;
 }
 
 // Question #4: Remove a book by its ID only if it is marked as unavailable.

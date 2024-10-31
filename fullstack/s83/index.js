@@ -15,6 +15,8 @@ const movieRoutes = require('./routes/movie')
 app.use('/users', userRoutes);
 app.use('/movies', movieRoutes);
 
-app.listen(4000, () => {console.log(`Running on port: 4000`)})
+if(require.main === module) {
+	app.listen(4000, () => console.log(`API is now online on port: 4000`));
+};
 
 module.exports = (app, mongoose);

@@ -19,4 +19,4 @@ if(require.main === module) {
 	app.listen(4000, () => console.log(`API is now online on port: 4000`));
 };
 
-module.exports = (app, mongoose);
+module.exports = {app, mongoose};

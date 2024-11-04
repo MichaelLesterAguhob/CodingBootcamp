@@ -1,0 +1,8 @@
+{
+    "url": "https://movies-app-client-two.vercel.app/login",
+    "endpoints": {
+        "register": "/register",
+        "login": "/login",
+        "movies": "/movies"
+    }
+}

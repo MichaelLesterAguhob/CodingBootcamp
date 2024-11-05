@@ -1,0 +1,8 @@
+{
+    "url": "https://blog-app-api-1fdw.onrender.com",
+    "endpoints": {
+        "register": "/register",
+        "login": "/login",
+        "posts": "/posts"
+    }
+}

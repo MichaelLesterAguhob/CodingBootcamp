@@ -1,5 +1,5 @@
 {
-    "url": "https://blog-app-sepia-nine.vercel.app/",
+    "url": "https://blog-app-sepia-nine.vercel.app",
     "endpoints": {
         "register": "/register",
         "login": "/login",

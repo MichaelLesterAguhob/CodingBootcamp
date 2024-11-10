@@ -1,5 +1,5 @@
 {
-    "url": "https://blog-app-api-1fdw.onrender.com",
+    "url": "https://blog-app-sepia-nine.vercel.app/",
     "endpoints": {
         "register": "/register",
         "login": "/login",
